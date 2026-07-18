@@ -34,6 +34,32 @@ export function buildFaqJsonLd(faqs: Faq[]): FaqJsonLd {
   };
 }
 
+/** A schema.org WebSite object for the site. */
+export interface WebsiteJsonLd {
+  "@context": "https://schema.org";
+  "@type": "WebSite";
+  name: string;
+  url: string;
+  description: string;
+  publisher: { "@type": "Organization"; name: string; url: string };
+}
+
+/** Build a schema.org WebSite object from `siteConfig` (home route). */
+export function buildWebsiteJsonLd(): WebsiteJsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
+}
+
 /** A schema.org LegalService (LocalBusiness subtype) for the firm. */
 export interface LegalServiceJsonLd {
   "@context": "https://schema.org";

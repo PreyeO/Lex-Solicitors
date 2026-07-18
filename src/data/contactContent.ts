@@ -26,7 +26,6 @@ export const contactContent: ContactContent = {
       label: "WhatsApp",
       value: siteConfig.phone,
       href: whatsappLink(CONSULTATION_MESSAGE),
-      ariaLabel: "Message Lex Haven Solicitors on WhatsApp",
       external: true,
     },
     {
@@ -35,7 +34,6 @@ export const contactContent: ContactContent = {
       label: "Phone",
       value: siteConfig.phone,
       href: CONTACT_LINKS.phone,
-      ariaLabel: "Call Lex Haven Solicitors",
     },
     {
       id: "email",
@@ -43,7 +41,6 @@ export const contactContent: ContactContent = {
       label: "Email",
       value: siteConfig.email,
       href: CONTACT_LINKS.email,
-      ariaLabel: "Email Lex Haven Solicitors",
     },
     {
       id: "address",
@@ -51,7 +48,6 @@ export const contactContent: ContactContent = {
       label: "Office",
       value: siteConfig.address,
       href: mapsDirectionsUrl(mapQuery),
-      ariaLabel: "Get directions to Lex Haven Solicitors on Google Maps",
       external: true,
     },
     {

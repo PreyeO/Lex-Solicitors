@@ -19,7 +19,7 @@ export function ApproachStep({ step, isLast }: ApproachStepProps) {
       <div className="flex flex-col items-center lg:w-full lg:flex-row lg:items-center">
         <span
           aria-hidden
-          className="z-10 flex size-12 shrink-0 items-center justify-center rounded-full border border-accent/40 bg-background font-display text-lg font-semibold text-accent"
+          className="z-10 flex size-12 shrink-0 items-center justify-center rounded-full bg-primary font-display text-lg font-semibold text-accent ring-1 ring-accent/30"
         >
           {String(step.number).padStart(2, "0")}
         </span>

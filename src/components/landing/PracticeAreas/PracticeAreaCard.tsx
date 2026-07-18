@@ -35,7 +35,7 @@ export function PracticeAreaCard({ service, index }: PracticeAreaCardProps) {
         </span>
         <span
           aria-hidden
-          className="font-display text-2xl font-semibold text-haven"
+          className="font-display text-2xl font-semibold text-muted-foreground"
         >
           {String(index).padStart(2, "0")}
         </span>

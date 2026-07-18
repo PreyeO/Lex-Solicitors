@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
@@ -16,7 +16,7 @@ const inter = Inter({
 /** Display / heading typeface → exposed as the --font-cormorant CSS variable. */
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600"], // the only display weights used across the site
   variable: "--font-cormorant",
   display: "swap",
 });
@@ -57,15 +57,18 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
+  // Icons are provided by file-based metadata (app/icon.svg, app/apple-icon.png,
+  // app/favicon.ico) and the manifest by app/manifest.ts.
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true },
   },
+};
+
+// Brand navy for the mobile browser chrome.
+export const viewport: Viewport = {
+  themeColor: "#0e2038",
 };
 
 export default function RootLayout({
@@ -74,6 +77,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
       <body className="flex min-h-dvh flex-col antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-primary-foreground focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none"
+        >
+          Skip to content
+        </a>
         <header className="fixed inset-x-0 top-0 z-50">
           <TopBar />
           <Navbar />
