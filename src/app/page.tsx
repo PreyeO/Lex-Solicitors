@@ -1,5 +1,8 @@
 import { About } from "@/components/landing/About";
 import { Approach } from "@/components/landing/Approach";
+import { ConsultationCta } from "@/components/landing/ConsultationCta";
+import { Contact } from "@/components/landing/Contact";
+import { Faq } from "@/components/landing/Faq";
 import { Hero } from "@/components/landing/Hero";
 import { PracticeAreas } from "@/components/landing/PracticeAreas";
 import { TrustStrip } from "@/components/landing/TrustStrip";
@@ -7,11 +10,9 @@ import { Values } from "@/components/landing/Values";
 import { WhyChooseUs } from "@/components/landing/WhyChooseUs";
 
 /**
- * Home page.
- *
- * Phase 6: Hero → TrustStrip → About → WhyChooseUs → PracticeAreas → Approach →
- * Values. Remaining landing sections (Faq, Contact, …) are composed below in
- * later phases; the spacer keeps a seam for what follows.
+ * Home page — the full landing composition (Phase 8, complete):
+ * Hero → TrustStrip → About → WhyChooseUs → PracticeAreas → Approach → Values →
+ * Faq → ConsultationCta → Contact. The Footer follows from the root layout.
  */
 export default function Home() {
   return (
@@ -23,8 +24,9 @@ export default function Home() {
       <PracticeAreas />
       <Approach />
       <Values />
-      {/* Placeholder for the remaining sections (built in later phases). */}
-      <div className="min-h-[24vh]" />
+      <Faq />
+      <ConsultationCta />
+      <Contact />
     </main>
   );
 }

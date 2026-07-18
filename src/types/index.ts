@@ -34,11 +34,41 @@ export interface Value {
   description: string;
 }
 
-/** A hero call-to-action. `type: "whatsapp"` builds the wa.me link; else `href`. */
+/** A call-to-action. `type` selects a channel (wa.me / mailto); else use `href`. */
 export interface HeroCta {
   label: string;
-  type?: "whatsapp";
+  type?: "whatsapp" | "email";
   href?: string;
+}
+
+/** Consultation CTA band copy. */
+export interface ConsultationCtaContent {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  primaryCta: HeroCta;
+  secondaryCta: HeroCta;
+}
+
+/** A single contact channel (WhatsApp, phone, email, address, hours). */
+export interface ContactChannel {
+  id: string;
+  icon: "whatsapp" | "phone" | "mail" | "map-pin" | "clock";
+  label: string;
+  value: string;
+  /** Omitted for plain-text channels (e.g. working hours). */
+  href?: string;
+  ariaLabel?: string;
+  external?: boolean;
+}
+
+/** Contact section copy. */
+export interface ContactContent {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  channels: ContactChannel[];
+  mapQuery: string;
 }
 
 /** A single step in the "Our Approach" process timeline. */
@@ -117,6 +147,7 @@ export interface HeroContent {
 
 /** A frequently asked question entry. */
 export interface Faq {
+  id: string;
   question: string;
   answer: string;
 }

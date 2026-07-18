@@ -1,17 +1,21 @@
-import type { SiteConfig } from "@/types";
-
 export interface JsonLdProps {
-  /** Firm configuration the structured data will be generated from. */
-  config?: SiteConfig;
+  /** A JSON-serializable schema.org object (static / trusted content). */
+  data: object;
 }
 
 /**
- * Structured data (JSON-LD) for the firm.
- *
- * STUB — a later phase will emit a `LegalService` / `LocalBusiness` schema.org
- * `<script type="application/ld+json">` built from `siteConfig`. Renders
- * nothing for now.
+ * Renders a `<script type="application/ld+json">` for structured data. Every
+ * "less-than" character is replaced with its unicode JSON escape so no closing
+ * script tag in the trusted content can break out of the element. The JSON
+ * stays valid. Server Component.
  */
-export function JsonLd() {
-  return null;
+export function JsonLd({ data }: JsonLdProps) {
+  const json = JSON.stringify(data).replace(/</g, "\\u003c");
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: json }}
+    />
+  );
 }
