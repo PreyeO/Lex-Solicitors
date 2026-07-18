@@ -1,14 +1,17 @@
 import { About } from "@/components/landing/About";
+import { Approach } from "@/components/landing/Approach";
 import { Hero } from "@/components/landing/Hero";
+import { PracticeAreas } from "@/components/landing/PracticeAreas";
 import { TrustStrip } from "@/components/landing/TrustStrip";
+import { Values } from "@/components/landing/Values";
 import { WhyChooseUs } from "@/components/landing/WhyChooseUs";
 
 /**
  * Home page.
  *
- * Phase 4: Hero → TrustStrip → About → WhyChooseUs. Remaining landing sections
- * (PracticeAreas, Approach, …) are composed below in later phases; the spacer
- * keeps a seam for what follows.
+ * Phase 6: Hero → TrustStrip → About → WhyChooseUs → PracticeAreas → Approach →
+ * Values. Remaining landing sections (Faq, Contact, …) are composed below in
+ * later phases; the spacer keeps a seam for what follows.
  */
 export default function Home() {
   return (
@@ -17,6 +20,9 @@ export default function Home() {
       <TrustStrip />
       <About />
       <WhyChooseUs />
+      <PracticeAreas />
+      <Approach />
+      <Values />
       {/* Placeholder for the remaining sections (built in later phases). */}
       <div className="min-h-[24vh]" />
     </main>

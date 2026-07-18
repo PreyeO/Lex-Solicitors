@@ -8,6 +8,8 @@ export interface SectionHeadingProps {
   align?: "left" | "center";
   /** Heading level, to keep the document outline correct. */
   as?: "h1" | "h2" | "h3";
+  /** `inverted` = light text for dark (ink) section backgrounds. */
+  tone?: "default" | "inverted";
   className?: string;
 }
 
@@ -18,9 +20,11 @@ export function SectionHeading({
   subtitle,
   align = "left",
   as: Heading = "h2",
+  tone = "default",
   className,
 }: SectionHeadingProps) {
   const centered = align === "center";
+  const inverted = tone === "inverted";
 
   return (
     <div
@@ -31,17 +35,31 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <span className="text-xs font-semibold tracking-[0.18em] text-accent uppercase">
+        <span
+          className={cn(
+            "inline-flex items-center gap-2.5 text-xs font-semibold tracking-[0.18em] uppercase",
+            inverted ? "text-primary-foreground/80" : "text-muted-foreground",
+          )}
+        >
+          {/* Gold accent dash (decorative) keeps the brand pop while the label
+              text stays AA-readable on light and dark backgrounds. */}
+          <span aria-hidden className="h-px w-6 bg-accent" />
           {eyebrow}
         </span>
       ) : null}
-      <Heading className="font-display text-3xl font-semibold text-balance text-foreground sm:text-4xl">
+      <Heading
+        className={cn(
+          "font-display text-3xl font-semibold text-balance sm:text-4xl",
+          inverted ? "text-primary-foreground" : "text-foreground",
+        )}
+      >
         {title}
       </Heading>
       {subtitle ? (
         <p
           className={cn(
-            "max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg",
+            "max-w-2xl text-base leading-relaxed sm:text-lg",
+            inverted ? "text-primary-foreground/80" : "text-muted-foreground",
             centered && "mx-auto",
           )}
         >

@@ -19,7 +19,13 @@ export interface Service {
   id: string;
   slug: string;
   title: string;
+  /** One-line summary (used in compact contexts like the trust strip). */
   summary: string;
+  /** Fuller descriptive paragraph (practice-areas section). */
+  description: string;
+  /** Representative capabilities within the practice area. */
+  capabilities: string[];
+  icon: "file-text" | "clipboard-check" | "landmark" | "calculator";
 }
 
 /** A core firm value (e.g. Integrity, Diligence). */
@@ -33,6 +39,37 @@ export interface HeroCta {
   label: string;
   type?: "whatsapp";
   href?: string;
+}
+
+/** A single step in the "Our Approach" process timeline. */
+export interface ApproachStep {
+  id: string;
+  number: number;
+  title: string;
+  description: string;
+}
+
+/** Our Approach section copy. */
+export interface ApproachContent {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  steps: ApproachStep[];
+}
+
+/** A single firm value. */
+export interface ValueItem {
+  id: string;
+  title: string;
+  description: string;
+}
+
+/** Our Values section copy. */
+export interface ValuesContent {
+  eyebrow: string;
+  title: string;
+  items: ValueItem[];
+  cta: HeroCta;
 }
 
 /** A labelled fact in the About definition list. */

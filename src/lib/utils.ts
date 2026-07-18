@@ -14,3 +14,8 @@ export function cn(...inputs: ClassValue[]) {
 export function whatsappLink(message: string): string {
   return `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(message)}`;
 }
+
+/** WhatsApp link with a prefilled "I'd like to discuss <title>." message. */
+export function whatsappMessageFor(title: string): string {
+  return whatsappLink(`I'd like to discuss ${title}.`);
+}
