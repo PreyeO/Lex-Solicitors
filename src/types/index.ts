@@ -16,6 +16,7 @@ export interface NavItem {
 
 /** A practice area / legal service offered by the firm. */
 export interface Service {
+  id: string;
   slug: string;
   title: string;
   summary: string;
@@ -47,6 +48,8 @@ export interface SiteConfig {
   name: string;
   tagline: string;
   description: string;
+  /** Short one-to-two sentence firm blurb (footer, About teaser). */
+  shortAbout: string;
   url: string;
   ogImage: string;
   keywords: string[];
